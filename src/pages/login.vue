@@ -35,6 +35,7 @@
 
 <script>
     import https from '../https.js';
+    import { setCookie } from "../utils/index";
 
     export default {
         name: "login",
@@ -65,7 +66,8 @@
                                     message: res.msg,
                                     type: 'success'
                                 });
-                                this.$route.push('/');
+                                setCookie('token', res.data.token);
+                                this.$router.push('/index');
                             }else{
                                 this.$message.error(res.msg);
                             }
