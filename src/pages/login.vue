@@ -34,8 +34,9 @@
 </template>
 
 <script>
-    import https from '../https.js';
+    import $ajax from '../https.js';
     import { setCookie } from "../utils/index";
+    import API from '../api.js';
 
     export default {
         name: "login",
@@ -54,12 +55,19 @@
             }
         },
         methods: {
+            checkLogin(){
+                $ajax.get(API.checkLogin).then(res=>{
+                    if(res.code === 0){
+                         this.$router.push('/index');
+                    }
+                })
+            },
             handleSubmit(event) {
                 this.form.remember = Boolean(this.form.remember);
                 this.$refs.form.validate(valid => {
                     if (valid) {
                         this.loading = true;
-                        https.post('/api/v1/user/auth/login/create', this.form).then(res => {
+                        $ajax.post(API.login, this.form).then(res => {
                             this.loading = false;
                             if(res.code === 0){
                                 this.$message({
@@ -75,6 +83,9 @@
                     }
                 })
             }
+        },
+        created(){
+            // this.checkLogin();
         }
     }
 </script>

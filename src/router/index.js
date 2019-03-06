@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import $ajax from '../https';
+import API from '../api.js';
 
 Vue.use(VueRouter);
 
@@ -34,5 +36,28 @@ const RouterConfig = {
 };
 
 const router = new VueRouter(RouterConfig);
+
+let checkLogin = function (callback) {
+    $ajax.get(API.checkLogin).then(res=>{
+        callback && callback(res)
+    })
+}
+
+router.beforeEach((to, from, next) => {
+    window.document.title = to.meta.title;
+    /*if(to.meta.requireLogin){
+        checkLogin(res=>{
+            if(res.code === 0){
+                next()
+            }else{
+                next({ path: '/login' });
+            }
+        })
+    }else{
+        next();
+    }*/
+    next()
+});
+
 
 export default router;
