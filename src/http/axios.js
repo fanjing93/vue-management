@@ -48,7 +48,7 @@ function successState(res) {
 // 封装axios--------------------------------------------------------------------------------------
 function apiAxios(params) {
   let method = params.method ? params.method.toLocaleUpperCase() : 'GET';
-  let data = Object.keys(params.data).length ? params.data : {};
+  let data = params.data || {};
   data['shop_id'] = 139;
   let httpDefault = {
     method: method,
