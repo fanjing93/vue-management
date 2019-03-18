@@ -5,11 +5,16 @@ import './assets/css/basic.css';
 import './assets/fonts/iconfont.css';
 import App from './App.vue'
 import router from './router/index';
+import store from './store/index'
+import $axios from './http/axios'
 
 Vue.config.productionTip = false;
-Vue.use(ElementUI, { size: 'small', zIndex: 3000 });
+Vue.prototype.$axios = $axios;
+
+Vue.use(ElementUI, {size: 'small', zIndex: 3000});
 
 new Vue({
-    router: router,
+    router,
+    store,
     render: h => h(App)
 }).$mount('#app');

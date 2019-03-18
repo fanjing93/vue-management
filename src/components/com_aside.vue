@@ -41,7 +41,7 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
     .menu-list {
         color: #F7F9FB;
         padding-top: 10px;

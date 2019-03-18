@@ -15,8 +15,7 @@
 </template>
 
 <script>
-    import $ajax from '../https.js';
-    import API from '../api.js';
+    import api from '../http/api';
     import comHeader from '../components/com_header';
     import comAside from '../components/com_aside';
 
@@ -25,33 +24,45 @@
             comHeader,
             comAside
         },
-        data(){
-          return{
-              menu_list:[]
-          }
+        data() {
+            return {
+                menu_list: []
+            }
         },
         methods: {
             getShop() {
-                $ajax.get(API.getShop).then(res => {
+                console.log(api);
+                this.$axios({
+                    url: api.getShop,
+                    method: 'get'
+                }).then(res => {
                     if (res.code === 0 && res.data && res.data.length) {
                         localStorage.setItem('shop_id', res.data[0]['shop_id']);
                         this.loginShop();
                     } else if (res.data && !res.data.length) {
                         this.createShop();
-                    }else{
-                        this.$message.warning(res.msg);
+                    } else if(res.code === 1007){
+                        this.$router.push('/login');
                     }
+                    this.$message.warning(res.msg);
                 })
             },
             createShop() {
-                $ajax.post(API.createShop, {shop_name: '默认店铺名称'}).then(res => {
+                this.$axios({
+                    url: api.createShop,
+                    method: 'post',
+                    data: {shop_name: '默认店铺名称'}
+                }).then(res => {
                     if (res.code === 0) {
                         this.getShop()
                     }
                 });
             },
             loginShop() {
-                $ajax.post(API.loginShop).then(res => {
+                this.$axios({
+                    url: api.loginShop,
+                    method: 'post'
+                }).then(res => {
                     if (res.code === 0) {
                         localStorage.setItem('shop_id', res.data['shop_id']);
                         localStorage.setItem('admin_id', res.data['admin_id']);
@@ -62,9 +73,12 @@
                     }
                 })
             },
-            getMenuList(){
-                $ajax.get(API.getMenuList).then(res=>{
-                    if(res.code === 0){
+            getMenuList() {
+                this.$axios({
+                    url: getMenuList,
+                    method: 'get'
+                }).then(res => {
+                    if (res.code === 0) {
                         this.menu_list = res.data;
                     }
                 })
@@ -76,7 +90,7 @@
     }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
     .container, .outer-el-container {
         width: 100%;
         height: 100%;
@@ -91,21 +105,21 @@
         flex: 1;
     }
 
-    .el-header[data-v-57509004], .el-footer[data-v-57509004]{
+    .el-header[data-v-57509004], .el-footer[data-v-57509004] {
         background-color: #fff;
         box-shadow: 0 0 12px 0 #e1e1e6;
         z-index: 3;
     }
 
-    .el-aside[data-v-57509004]{
+    .el-aside[data-v-57509004] {
         background-color: #2e3234;
     }
 
-    .el-aside[data-v-57509004]{
-        width: 150px!important;
+    .el-aside[data-v-57509004] {
+        width: 150px !important;
     }
 
-    .el-main[data-v-57509004]{
+    .el-main[data-v-57509004] {
         background-color: #fff;
     }
 

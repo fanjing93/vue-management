@@ -34,9 +34,8 @@
 </template>
 
 <script>
-    import $ajax from '../https.js';
     import { setCookie } from "../utils/index";
-    import API from '../api.js';
+    import api from '../http/api';
 
     export default {
         name: "login",
@@ -56,7 +55,10 @@
         },
         methods: {
             checkLogin(){
-                $ajax.get(API.checkLogin).then(res=>{
+                this.$axios({
+                    url:api.checkLogin,
+                    method: 'get'
+                }).then(res=>{
                     if(res.code === 0){
                          this.$router.push('/index');
                     }
@@ -67,7 +69,11 @@
                 this.$refs.form.validate(valid => {
                     if (valid) {
                         this.loading = true;
-                        $ajax.post(API.login, this.form).then(res => {
+                        this.$axios({
+                            url: api.login,
+                            method: 'post',
+                            data: this.form
+                        }).then(res => {
                             this.loading = false;
                             if(res.code === 0){
                                 this.$message({
@@ -85,12 +91,12 @@
             }
         },
         created(){
-            // this.checkLogin();
+            this.checkLogin();
         }
     }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
     .login-container {
         width: 100%;
         height: 100%;

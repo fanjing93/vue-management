@@ -14,9 +14,11 @@
             <slot></slot>
         </div>
         <div class="header-right">
-            <span class="cursor-pointer"><a href="https://jinshuju.net/f/Pv9FVB" target="_blank" title="问题反馈">问题反馈</a></span>
+            <span class="cursor-pointer"><a href="https://jinshuju.net/f/Pv9FVB" target="_blank"
+                                            title="问题反馈">问题反馈</a></span>
             <span class="margin-left-10 margin-right-10">|</span>
-            <span class="margin-right-10 cursor-pointer"><a href="https://wemart.kf5.com/hc/"    target="_blank" title="帮助中心">帮助中心</a></span>
+            <span class="margin-right-10 cursor-pointer"><a href="https://wemart.kf5.com/hc/" target="_blank"
+                                                            title="帮助中心">帮助中心</a></span>
             <span class="line-height-1 font-size-22 iconfont icon-gerenzhongxin1"></span>
         </div>
     </div>
@@ -40,80 +42,80 @@
     }
 </script>
 
-<style scoped lang="less">
+<style scoped>
     .header-container {
         width: 100%;
         height: 100%;
         display: flex;
         justify-content: space-between;
-
-        .header-left {
-            flex-basis: 130px;
-            padding-right: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            &>div {
-                align-items: flex-start;
-                display: flex;
-                flex-direction: column;
-                padding-left: 10px;
-                line-height: 1.4;
-                flex: 1;
-
-                .header-left-text {
-                    text-align: left;
-                    font-size: 14px;
-                }
-            }
-
-        }
-
-        .header-center {
-            flex: 1;
-        }
-
-        .font-size-12 {
-            font-size: 12px;
-        }
-
-        .font-size-22{
-            font-size: 22px;
-        }
-
-        .color-gray {
-            color: #939596;
-        }
-
-        .cursor-pointer {
-            cursor: pointer;
-        }
-
-        .header-right {
-            flex-basis: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0;
-            &>span {
-                 font-size: 14px;
-                 line-height: 1.4;
-                &.iconfont{
-                     font-size: 22px;
-                     display: inline-block;
-                     cursor: pointer;
-                 }
-             }
-
-        }
-
     }
 
-    .margin-left-10{
+    .header-left {
+        flex-basis: 130px;
+        padding-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-left > div {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        line-height: 1.4;
+        flex: 1;
+    }
+
+    .header-left .header-left-text {
+        text-align: left;
+        font-size: 14px;
+    }
+
+    .header-center {
+        flex: 1;
+    }
+
+    .font-size-12 {
+        font-size: 12px;
+    }
+
+    .font-size-22 {
+        font-size: 22px;
+    }
+
+    .color-gray {
+        color: #939596;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .header-right {
+        flex-basis: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0;
+    }
+
+    .header-right > span {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .header-right > span.iconfont {
+        font-size: 22px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .margin-left-10 {
         margin-left: 10px;
     }
-    .margin-right-10{
+
+    .margin-right-10 {
         margin-right: 10px;
     }
 
