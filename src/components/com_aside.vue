@@ -45,11 +45,15 @@
     .menu-list {
         color: #F7F9FB;
         padding-top: 10px;
-
+    }
     .menu-list-item {
         padding: 10px 0;
         line-height: 1.2;
     }
 
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>
