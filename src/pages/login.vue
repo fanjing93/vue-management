@@ -64,7 +64,7 @@
                     }
                 })
             },
-            handleSubmit(event) {
+            handleSubmit() {
                 this.form.remember = Boolean(this.form.remember);
                 this.$refs.form.validate(valid => {
                     if (valid) {

@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import API from '../http/api';
 
 Vue.use(VueRouter);
 
@@ -19,13 +18,14 @@ const Routers = [
     {
         path: '/login',
         meta: {
-            title: 'login'
+            title: 'login',
+            requireLogin: true
         },
         component: (resolve) => require(['../pages/login.vue'], resolve)
     },
     {
         path: '*',
-        redirect: '/index'
+        redirect: '/login'
     }
 ];
 const RouterConfig = {

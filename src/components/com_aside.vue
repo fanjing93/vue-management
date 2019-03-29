@@ -1,6 +1,6 @@
 <template>
     <ul class="menu-list">
-        <li class="menu-list-item" v-for="(item, index) in currentList">
+        <li class="menu-list-item" v-for="(item, index) in currentList" :key="index">
             <span class="iconfont" :class="item.icon"></span>
             {{ item.name }}
         </li>

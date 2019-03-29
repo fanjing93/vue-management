@@ -31,7 +31,6 @@
         },
         methods: {
             getShop() {
-                console.log(api);
                 this.$axios({
                     url: api.getShop,
                     method: 'get'
@@ -75,7 +74,7 @@
             },
             getMenuList() {
                 this.$axios({
-                    url: getMenuList,
+                    url: api.getMenuList,
                     method: 'get'
                 }).then(res => {
                     if (res.code === 0) {
